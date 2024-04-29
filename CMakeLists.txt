@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.18.0)
+project(QtPractice VERSION 0.0.1 LANGUAGES CXX)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+#set(CMAKE_SUPPRESS_REGENERATION true)
+
+set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/install)
+#set(CMAKE_CONFIGURATION_TYPES Debug Release)
+#set(CMAKE_BUILD_TYPE Release)
+
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets OpenGL OpenGLWidgets)
+#qt_standard_project_setup()
+
+
+#message("config:$<CONFIG>")
+#set(QT_DEPLOY_SUPPORT "")
+#include(${Qt6Core_DIR}/Qt6CoreMacros.cmake)
+#    if(QT_SKIP_SETUP_DEPLOYMENT)
+#        message("QT_SKIP_SETUP_DEPLOYMENT")
+#    endif()
+#        get_property(cmake_role GLOBAL PROPERTY CMAKE_ROLE)
+#    if(NOT cmake_role STREQUAL "PROJECT")
+#        message("no cmake_role")
+#    endif()
+#        _qt_internal_get_deploy_impl_dir(deploy_impl_dir)
+#
+#    get_cmake_property(is_multi_config GENERATOR_IS_MULTI_CONFIG)
+#    if(is_multi_config)
+#        message("is_multi_config: true")
+#        set(QT_DEPLOY_SUPPORT "${deploy_impl_dir}/QtDeploySupport-$<CONFIG>.cmake")
+#            set(QT_DEPLOY_SUPPORT "${deploy_impl_dir}/QtDeploySupport-${CMAKE_BUILD_TYPE}.cmake")
+#        message("qt deploy exe:${QT_DEPLOY_SUPPORT}")
+#    else()
+#        message("is_multi_config: false")
+#        set(QT_DEPLOY_SUPPORT "${deploy_impl_dir}/QtDeploySupport.cmake")
+#    endif()
+#
+#    message("cmake_build_type:${CMAKE_BUILD_TYPE}")
+#_qt_internal_setup_deploy_support()
+#include(${QT_DEPLOY_SUPPORT})
+#
+##include(${Qt6Core_DIR}/Qt6CoreDeploySupport.cmake)
+#message("qt deploy exe:${__QT_DEPLOY_TOOL}")
+#message("qt deploy exe:${QT_DEPLOY_BIN_DIR}")
+#message("qt deploy exe:${QT_DEPLOY_SUPPORT}")
+#message("qt win deploy exe:${WINDEPLOYQT_EXECUTABLE}")
+
+add_subdirectory(widget_practice)
+add_subdirectory(qml_practice)
