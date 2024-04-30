@@ -2,6 +2,7 @@
 #include <QPushButton>
 #include <QMenuBar>
 #include <QVBoxLayout>
+#include <QThread>
 #include "mymainwindow.h"
 #include "mywidget.h"
 
@@ -17,7 +18,7 @@ int main(int argc, char** argv)
 	menuBar->addMenu(QString("Project"));
 	menuBar->addMenu(QString("Edit"));
 
-	QWidget* central = new MyWidget;
+	MyWidget* central = new MyWidget;
 	central->setStyleSheet("background-color: green;");
 
 	QWidget* vLayoutWidget = new QWidget(central);
@@ -35,8 +36,9 @@ int main(int argc, char** argv)
 	QPushButton* button2 = new QPushButton(vLayoutWidget);
 	button2->setText("press2");
 	button2->show();
-	QObject::connect(button2, &QPushButton::clicked, []() {
+	QObject::connect(button2, &QPushButton::clicked, [&]() {
 		qDebug() << "button2 clicked";
+		central->changeBackgroundColor();
 	});
 
 	QVBoxLayout* vLayout = new QVBoxLayout(vLayoutWidget);
